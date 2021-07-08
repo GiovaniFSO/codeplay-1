@@ -18,9 +18,9 @@ describe 'Enrollment from courses API' do
       expect(response).to have_http_status(200)
       expect(response.content_type).to include('application/json')
       expect(parsed_body.count).to eq(2)
-      expect(parsed_body['course']).to eq('Ruby')
-      expect(parsed_body[0]['email']).to eq('student@email.com')
-      expect(parsed_body[1]['email']).to eq('johndoe@email.com')
+      expect(parsed_body['name']).to eq('Ruby')
+      expect(parsed_body["enrollments"][0]["student"]["email"]).to eq('student@email.com')
+      expect(parsed_body["enrollments"][1]["student"]["email"]).to eq('johndoe@email.com')
     end
   end
 

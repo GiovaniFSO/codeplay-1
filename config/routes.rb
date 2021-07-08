@@ -19,7 +19,9 @@ Rails.application.routes.draw do
 
   namespace :api do
     namespace :v1 do
-      resources :courses, only: %i[index show create], param: :code
+      resources :courses, only: %i[index show create], param: :code do
+        resources :enrollments, only: %i[index], constraints: { format: 'json' }
+      end
     end
   end
 end
